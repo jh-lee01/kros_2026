@@ -8,9 +8,9 @@ import threading
 import time
 
 
-class SoftwarePWMServo(Node):
+class ServoControl(Node):
     def __init__(self):
-        super().__init__('software_pwm_servo')
+        super().__init__('servo_control')
 
         # ===== GPIO 설정 =====
         self.servo_pin = 33           # BOARD 기준
@@ -60,10 +60,8 @@ class SoftwarePWMServo(Node):
 
     def flag_callback(self, msg):
         if msg.data:
-            self.get_logger().info('servo_flag TRUE → target angle')
             self.current_angle = self.target_angle
         else:
-            self.get_logger().info('servo_flag FALSE → initial angle')
             self.current_angle = self.initial_angle
 
     def destroy_node(self):
@@ -75,7 +73,7 @@ class SoftwarePWMServo(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    node = SoftwarePWMServo()
+    node = ServoControl()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
