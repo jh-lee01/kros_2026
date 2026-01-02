@@ -27,8 +27,18 @@ Connect companion computer with PX4 ("/ttyUSB0" depends on the hardware ports)
 sudo MicroXRCEAgent serial --dev /dev/ttyUSB0 -b 921600
 ```
 
-## Making package with python nodes
+## Making new package with python nodes (not cpp nodes)
+Create python package
 ```
 cd ~/kros_2026/src
 ros2 pkg create --build-type ament_python <package_name>
+```
+### Add executable
+Edit ~/kros_2026/src/<package_name>/setup.py
+```
+    entry_points={
+        'console_scripts': [
+            '<execuatable_name> = <package_name>.<python_file_name>:main',
+        ],
+    }
 ```
