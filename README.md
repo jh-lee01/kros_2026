@@ -3,7 +3,7 @@
 ## Clone
 ```
 git clone https://github.com/jh-lee01/kros_2026.git
-rosdep install -i --from-path AMRL_2025_Hybrid_Robot --rosdistro foxy -y
+rosdep install -i --from-path src --rosdistro humble -y
 colcon build --symlink-install
 source install/local_setup.bash
 ```
