@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'servo'
+package_name = 'servo_lidar'
 
 setup(
     name=package_name,
@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'servo_node = servo.ServoControl:main'
+            'servo_node = servo_lidar.ServoControl:main',
+            'lidar_node = servo_lidar.LidarProcessor:main'
         ],
     },
 )
